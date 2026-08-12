@@ -139,6 +139,8 @@ fun ChatExportSheet(
 
                 val markdownSuccessMessage =
                     stringResource(id = R.string.chat_page_export_success, "Markdown")
+                val imageSuccessMessage =
+                    stringResource(id = R.string.chat_page_export_success, "Image")
 
                 // 导出到用户选择的第三方文件夹（SAF，如"质感文件"）
                 val exportMarkdownLauncher = rememberLauncherForActivityResult(
@@ -176,10 +178,7 @@ fun ChatExportSheet(
                                 toaster.show("Export failed: ${e.message}", type = ToastType.Error)
                             }
                         }
-                        toaster.show(
-                            stringResource(id = R.string.chat_page_export_success, "Image"),
-                            type = ToastType.Success
-                        )
+                        toaster.show(imageSuccessMessage, type = ToastType.Success)
                     }
                     onDismissRequest()
                 }
@@ -205,8 +204,6 @@ fun ChatExportSheet(
                     )
                 }
 
-                val imageSuccessMessage =
-                    stringResource(id = R.string.chat_page_export_success, "Image")
                 OutlinedCard(
                     modifier = Modifier.fillMaxWidth()
                 ) {

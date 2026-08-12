@@ -229,3 +229,155 @@ internal fun FilesPicker(
     }
 }
 
+@Composable
+private fun InjectionQuickConfigSheet(
+    conversation: Conversation,
+    assistant: Assistant,
+    settings: Settings,
+    onUpdateAssistant: (Assistant) -> Unit,
+    onUpdateConversation: (Conversation) -> Unit,
+    onDismiss: () -> Unit,
+    onDismissAll: () -> Unit,
+) {
+    val sheetState = rememberBottomSheetState(initialValue = SheetValue.Hidden, enabledValues = setOf(SheetValue.Hidden, SheetValue.Expanded))
+    val navController = LocalNavController.current
+
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = sheetState,
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(0.75f)
+                .padding(horizontal = 16.dp),
+        ) {
+            ExtensionSelector(
+                assistant = assistant,
+                settings = settings,
+                onUpdate = onUpdateAssistant,
+                conversation = conversation,
+                onUpdateConversation = onUpdateConversation,
+                modifier = Modifier.weight(1f),
+                onNavigateToQuickMessages = {
+                    onDismissAll()
+                    navController.navigate(Screen.QuickMessages)
+                },
+                onNavigateToPrompts = {
+                    onDismissAll()
+                    navController.navigate(Screen.Prompts)
+                },
+                onNavigateToSkills = {
+                    onDismissAll()
+                    navController.navigate(Screen.Skills)
+                })
+
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+    }
+}
+
+@Composable
+private fun ImagePickButton(onClick: () -> Unit = {}) {
+    BigIconTextButton(icon = {
+        Icon(HugeIcons.Image02, null)
+    }, text = {
+        Text(stringResource(R.string.photo))
+    }) {
+        onClick()
+    }
+}
+
+@Composable
+fun TakePicButton(onLaunchCamera: () -> Unit = {}) {
+    BigIconTextButton(icon = {
+        Icon(HugeIcons.Camera01, null)
+    }, text = {
+        Text(stringResource(R.string.take_picture))
+    }) {
+        onLaunchCamera()
+    }
+}
+
+@Composable
+fun VideoPickButton(onClick: () -> Unit = {}) {
+    BigIconTextButton(icon = {
+        Icon(HugeIcons.Video01, null)
+    }, text = {
+        Text(stringResource(R.string.video))
+    }) {
+        onClick()
+    }
+}
+
+@Composable
+fun AudioPickButton(onClick: () -> Unit = {}) {
+    BigIconTextButton(icon = {
+        Icon(HugeIcons.MusicNote03, null)
+    }, text = {
+        Text(stringResource(R.string.audio))
+    }) {
+        onClick()
+    }
+}
+
+@Composable
+fun FilePickButton(onClick: () -> Unit = {}) {
+    BigIconTextButton(icon = {
+        Icon(HugeIcons.Files02, null)
+    }, text = {
+        Text(stringResource(R.string.upload_file))
+    }) {
+        onClick()
+    }
+}
+
+@Composable
+private fun BigIconTextButton(
+    modifier: Modifier = Modifier,
+    icon: @Composable () -> Unit,
+    text: @Composable () -> Unit,
+    onClick: () -> Unit,
+) {
+    val interactionSource = remember { MutableInteractionSource() }
+    Column(
+        modifier = modifier
+            .clip(RoundedCornerShape(8.dp))
+            .clickable(
+                interactionSource = interactionSource, indication = LocalIndication.current, onClick = onClick
+            )
+            .semantics {
+                role = Role.Button
+            }
+            .wrapContentWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(2.dp)) {
+        Surface(
+            color = MaterialTheme.colorScheme.surfaceContainer, shape = RoundedCornerShape(8.dp)
+        ) {
+            Box(
+                modifier = Modifier.padding(horizontal = 32.dp, vertical = 16.dp)
+            ) {
+                icon()
+            }
+        }
+        ProvideTextStyle(MaterialTheme.typography.bodySmall) {
+            text()
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun BigIconTextButtonPreview() {
+    Row(
+        modifier = Modifier.padding(16.dp)
+    ) {
+        BigIconTextButton(icon = {
+            Icon(HugeIcons.Image02, null)
+        }, text = {
+            Text(stringResource(R.string.photo))
+        }) {}
+    }
+}
+

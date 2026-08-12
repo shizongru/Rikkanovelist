@@ -345,14 +345,6 @@ fun ChatDrawerContent(
                         onDismissRequest = { showMenuPopup = false }
                     ) {
                         DropdownMenuItem(
-                            text = { Text(stringResource(R.string.chat_page_menu_ai_translator)) },
-                            leadingIcon = { Icon(HugeIcons.LanguageCircle, null) },
-                            onClick = {
-                                showMenuPopup = false
-                                navController.navigate(Screen.Translator)
-                            }
-                        )
-                        DropdownMenuItem(
                             text = { Text(stringResource(R.string.chat_page_menu_image_generation)) },
                             leadingIcon = { Icon(HugeIcons.Image02, null) },
                             onClick = {
@@ -372,18 +364,6 @@ fun ChatDrawerContent(
                     },
                     onClick = {
                         navController.navigate(Screen.Favorite)
-                    },
-                )
-
-                DrawerAction(
-                    icon = {
-                        Icon(HugeIcons.ChartColumn, "统计数据")
-                    },
-                    label = {
-                        Text("统计数据")
-                    },
-                    onClick = {
-                        navController.navigate(Screen.Stats)
                     },
                 )
 

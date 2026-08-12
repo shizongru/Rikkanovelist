@@ -1,8 +1,5 @@
 package me.rerere.rikkahub.di
 
-import com.google.firebase.Firebase
-import com.google.firebase.analytics.analytics
-import com.google.firebase.crashlytics.crashlytics
 import kotlinx.serialization.json.Json
 import me.rerere.rikkahub.AppScope
 import me.rerere.rikkahub.data.ai.tools.local.LocalTools
@@ -24,7 +21,7 @@ val appModule = module {
     }
 
     single {
-        LocalTools(get(), get(), get(), get())
+        LocalTools(get(), get(), get())
     }
 
     single {
@@ -39,8 +36,6 @@ val appModule = module {
         EmojiUtils.loadEmoji(get())
     }
 
-    single {
-    }
 
     single {
         ChatService(
@@ -54,14 +49,10 @@ val appModule = module {
             templateTransformer = get(),
             providerManager = get(),
             localTools = get(),
-            mcpManager = get(),
             filesManager = get(),
             skillManager = get(),
-            workspaceRepository = get(),
             folderRepository = get()
         )
     }
 
-    single {
-    }
 }

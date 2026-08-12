@@ -87,6 +87,7 @@ import me.rerere.rikkahub.ui.components.ui.Favicon
 import me.rerere.rikkahub.ui.context.LocalNavController
 import me.rerere.rikkahub.ui.modifier.shimmer
 import me.rerere.rikkahub.ui.context.LocalSettings
+import me.rerere.rikkahub.ui.components.webview.WebViewContentCache
 import me.rerere.rikkahub.ui.theme.LocalChatFontFamily
 import me.rerere.rikkahub.ui.theme.rememberChatFontFamily
 import me.rerere.rikkahub.ui.theme.extendColors
@@ -205,11 +206,6 @@ fun ChatMessage(
                 )
             }
         }
-
-        EditedFilesList(
-            parts = message.parts,
-            assistant = assistant,
-        )
 
         ProvideTextStyle(textStyle) {
             ChatMessageNerdLine(message = message)

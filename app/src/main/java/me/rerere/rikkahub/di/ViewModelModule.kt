@@ -28,7 +28,6 @@ val viewModelModule = module {
             conversationRepo = get(),
             chatService = get(),
             updateChecker = get(),
-            analytics = get(),
             filesManager = get(),
             favoriteRepository = get(),
         )
@@ -44,7 +43,6 @@ val viewModelModule = module {
             memoryRepository = get(),
             filesManager = get(),
             skillManager = get(),
-            workspaceRepository = get(),
         )
     }
     viewModel<ShareHandlerVM> {

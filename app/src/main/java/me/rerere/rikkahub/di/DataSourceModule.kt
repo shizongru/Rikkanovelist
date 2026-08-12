@@ -137,10 +137,6 @@ val dataSourceModule = module {
     }
 
     single {
-        get<AppDatabase>().workspaceDao()
-    }
-
-    single {
         get<AppDatabase>().folderDao()
     }
 

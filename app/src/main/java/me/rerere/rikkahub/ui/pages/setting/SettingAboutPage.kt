@@ -134,7 +134,6 @@ fun SettingAboutPage() {
                         item(
                             modifier = Modifier.combinedClickable(
                                 onClick = {},
-                                onLongClick = { navController.navigate(Screen.Debug) },
                             ),
                             leadingContent = { Icon(HugeIcons.Code, null) },
                             supportingContent = {

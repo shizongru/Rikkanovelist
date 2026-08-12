@@ -2,6 +2,7 @@ package me.rerere.rikkahub.ui.components.webview
 
 import android.content.Context
 import android.net.Uri
+import android.webkit.WebResourceResponse
 
 /**
  * 应用内 WebView 使用的虚拟域名，用于给 loadDataWithBaseURL 提供一个稳定的 origin。

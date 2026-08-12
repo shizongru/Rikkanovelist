@@ -1046,7 +1046,7 @@ class ChatService(
             node.messages.any { it.id == messageId }
         }
         if (targetNodeIndex == -1) {
-            throw NotFoundException("Message not found")
+            throw IllegalStateException("Message not found")
         }
 
         val copiedNodes = currentConversation.messageNodes
@@ -1084,10 +1084,10 @@ class ChatService(
     ) {
         val currentConversation = getConversationFlow(conversationId).value
         val targetNode = currentConversation.messageNodes.firstOrNull { it.id == nodeId }
-            ?: throw NotFoundException("Message node not found")
+            ?: throw IllegalStateException("Message node not found")
 
         if (selectIndex !in targetNode.messages.indices) {
-            throw BadRequestException("Invalid selectIndex")
+            throw IllegalArgumentException("Invalid selectIndex")
         }
 
         if (targetNode.selectIndex == selectIndex) {
@@ -1115,7 +1115,7 @@ class ChatService(
 
         if (updatedConversation == null) {
             if (failIfMissing) {
-                throw NotFoundException("Message not found")
+                throw IllegalStateException("Message not found")
             }
             return
         }
