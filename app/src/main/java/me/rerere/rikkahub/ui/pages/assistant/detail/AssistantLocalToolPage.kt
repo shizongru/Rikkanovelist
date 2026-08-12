@@ -170,8 +170,6 @@ private fun AssistantLocalToolContent(
                     )
                 }
             )
-                }
-            )
             item(
                 headlineContent = {
                     Text(stringResource(R.string.assistant_page_local_tools_ask_user_title))

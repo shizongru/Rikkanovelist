@@ -76,7 +76,6 @@ import me.rerere.rikkahub.ui.pages.assistant.detail.AssistantBasicPage
 import me.rerere.rikkahub.ui.pages.assistant.detail.AssistantDetailPage
 import me.rerere.rikkahub.ui.pages.assistant.detail.AssistantExtensionsPage
 import me.rerere.rikkahub.ui.pages.assistant.detail.AssistantLocalToolPage
-import me.rerere.rikkahub.ui.pages.assistant.detail.AssistantMcpPage
 import me.rerere.rikkahub.ui.pages.assistant.detail.AssistantMemoryPage
 import me.rerere.rikkahub.ui.pages.assistant.detail.AssistantPromptPage
 import me.rerere.rikkahub.ui.pages.assistant.detail.AssistantRequestPage
@@ -99,14 +98,12 @@ import me.rerere.rikkahub.ui.pages.setting.SettingPreferencesGeneralPage
 import me.rerere.rikkahub.ui.pages.setting.SettingPreferencesUIPage
 import me.rerere.rikkahub.ui.pages.setting.SettingThemePage
 import me.rerere.rikkahub.ui.pages.setting.SettingFilesPage
-import me.rerere.rikkahub.ui.pages.setting.SettingMcpPage
 import me.rerere.rikkahub.ui.pages.setting.SettingModelPage
 import me.rerere.rikkahub.ui.pages.setting.SettingPage
 import me.rerere.rikkahub.ui.pages.setting.SettingProviderDetailPage
 import me.rerere.rikkahub.ui.pages.setting.SettingProviderPage
 import me.rerere.rikkahub.ui.pages.setting.SettingSearchDetailPage
 import me.rerere.rikkahub.ui.pages.setting.SettingSearchPage
-import me.rerere.rikkahub.ui.pages.setting.SettingWebPage
 import me.rerere.rikkahub.ui.pages.share.handler.ShareHandlerPage
 import me.rerere.rikkahub.ui.theme.LocalDarkMode
 import me.rerere.rikkahub.ui.theme.RikkahubTheme
@@ -339,10 +336,6 @@ class RouteActivity : ComponentActivity() {
                                 AssistantRequestPage(key.id)
                             }
 
-                            entry<Screen.AssistantMcp> { key ->
-                                AssistantMcpPage(key.id)
-                            }
-
                             entry<Screen.AssistantLocalTool> { key ->
                                 AssistantLocalToolPage(key.id)
                             }
@@ -350,7 +343,6 @@ class RouteActivity : ComponentActivity() {
                             entry<Screen.AssistantInjections> { key ->
                                 AssistantExtensionsPage(key.id)
                             }
-
 
                             entry<Screen.Setting> {
                                 SettingPage()
@@ -418,15 +410,9 @@ class RouteActivity : ComponentActivity() {
                                 SettingSearchDetailPage(id)
                             }
 
-
-
-
                             entry<Screen.SettingFiles> {
                                 SettingFilesPage()
                             }
-
-
-
 
                             entry<Screen.Extensions> {
                                 ExtensionsPage()
@@ -443,7 +429,6 @@ class RouteActivity : ComponentActivity() {
                             entry<Screen.Skills> {
                                 SkillsPage()
                             }
-
 
                             entry<Screen.SkillDetail> { key ->
                                 SkillDetailPage(skillName = key.skillName)
@@ -540,14 +525,10 @@ sealed interface Screen : NavKey {
     data class AssistantRequest(val id: String) : Screen
 
     @Serializable
-
-    @Serializable
     data class AssistantLocalTool(val id: String) : Screen
 
     @Serializable
     data class AssistantInjections(val id: String) : Screen
-
-    @Serializable
 
     @Serializable
     data object Setting : Screen
@@ -598,19 +579,7 @@ sealed interface Screen : NavKey {
     data class SettingSearchDetail(val serviceId: String) : Screen
 
     @Serializable
-
-    @Serializable
-
-    @Serializable
-
-    @Serializable
     data object SettingFiles : Screen
-
-    @Serializable
-
-    @Serializable
-
-    @Serializable
 
     @Serializable
     data object Extensions : Screen
@@ -624,15 +593,10 @@ sealed interface Screen : NavKey {
     @Serializable
     data object Skills : Screen
 
-
-
-
-
     @Serializable
     data class SkillDetail(val skillName: String) : Screen
 
     @Serializable
     data object MessageSearch : Screen
 
-    @Serializable
 }
