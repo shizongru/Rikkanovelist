@@ -56,8 +56,6 @@ fun DynamicScheme.toColorScheme(): ColorScheme {
             onSecondaryFixedVariant = Color(s.onSecondaryFixedVariant),
             tertiaryFixed = Color(s.tertiaryFixed),
             tertiaryFixedDim = Color(s.tertiaryFixedDim),
-            onTertiaryFixed = Color(s.onTertiaryFixed),
-            onTertiaryFixedVariant = Color(s.onTertiaryFixedVariant),
         )
     } else {
         lightColorScheme(
@@ -107,8 +105,6 @@ fun DynamicScheme.toColorScheme(): ColorScheme {
             onSecondaryFixedVariant = Color(s.onSecondaryFixedVariant),
             tertiaryFixed = Color(s.tertiaryFixed),
             tertiaryFixedDim = Color(s.tertiaryFixedDim),
-            onTertiaryFixed = Color(s.onTertiaryFixed),
-            onTertiaryFixedVariant = Color(s.onTertiaryFixedVariant),
         )
     }
 }
